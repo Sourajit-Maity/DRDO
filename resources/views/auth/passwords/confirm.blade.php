@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Royal Research</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+    
+
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(../images/r_logo.png);">
+			      </div>
+						<div class="login-wrap p-4 p-md-5">
+			      	<div class="">
+                      <h3 class="text-center">Confirm Password</h3>
+			      	</div>
+							<form method="POST" action="{{ route('password.confirm') }}" class="signin-form">
+                            @csrf
+                            <div class="form-group mb-3">
+			      			<label class="label" for="name">Password</label>
+                              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+			      		</div>
+		            <div class="form-group mb-3">
+		            	<label class="label" for="password">Password</label>
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror		            </div>
+		            <div class="form-group">
+		            	<button type="submit" class="form-control btn btn-info rounded submit px-3">Confirm Password</button>
+		            </div>
+		            <div class="form-group d-md-flex">
+		            	
+									<div class="w-50 text-md-right">
+                                    @if (Route::has('password.request'))
+										 <a href="{{ route('password.request') }}">Forgot Password!</a>
+                                     @endif
+									</div>
+		            </div>
+		          </form>
+		          <p class="text-center">
+                    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+                  </p>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+        <script>
+            function showTime(){
+                var date = new Date();
+                var h = date.getHours(); // 0 - 23
+                var m = date.getMinutes(); // 0 - 59
+                var s = date.getSeconds(); // 0 - 59
+                var session = "AM";
+                
+                if(h == 0){
+                    h = 12;
+                }
+                
+                if(h > 12){
+                    h = h - 12;
+                    session = "PM";
+                }
+                
+                h = (h < 10) ? "0" + h : h;
+                m = (m < 10) ? "0" + m : m;
+                s = (s < 10) ? "0" + s : s;
+                
+                var time = h + ":" + m + ":" + s + " " + session;
+                document.getElementById("MyClockDisplay").innerText = time;
+                document.getElementById("MyClockDisplay").textContent = time;
+                
+                setTimeout(showTime, 1000);
+                
+            }
+
+            showTime();
+        </script>
+	</body>
+</html>
