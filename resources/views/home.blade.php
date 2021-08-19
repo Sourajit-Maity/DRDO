@@ -181,7 +181,7 @@
                       <h2>DRDO-CAS</h2>
                     @else
 
-                      <h2> {{$employee->c_name}}</h2>
+                      <h2></h2>
                      
                     @endif
   

@@ -92,7 +92,7 @@ class UsermanagementController extends Controller
         $employee->emp_code=  'CAS'.'-'.$emp_code;
         
         $employee->save();
-
+ 
         $user= new User();
         $user->emp_id = $employee->id;
         $user->name= $request->get('name');
