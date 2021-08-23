@@ -455,8 +455,6 @@ class EmployeeController extends Controller
                 $employee->cadre_id= $request->get('cadre_id');
                 $employee->emp_work_telephone= $request->get('emp_work_telephone');
                 $employee->emp_work_email= $request->get('emp_work_email');
-               
-             
 
                 $employee->update();
 
