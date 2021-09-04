@@ -71,31 +71,46 @@ class UsersImport implements ToCollection, WithHeadingRow
                         'emp_pan_num'     => $row['emp_pan_num'],
                         'emp_aadhar_num'    => $row['emp_aadhar_num'], 
                         'emp_street1'    => $row['emp_street1'], 
+                        'emp_street2'  => $row['emp_street2'],
                         'emp_mobile'    => $row['emp_mobile'], 
                         'emp_work_telephone'     => $row['emp_work_telephone'],
                         'emp_hm_telephone'    => $row['emp_hm_telephone'], 
                         'emp_work_email'    => $row['emp_work_email'], 
                         'emp_pincode'    => $row['emp_pincode'],
+                        // 'city_code'  => $row['city_code'],
+                        // 'state_code'  => $row['state_code'],
+                        // 'district_code'  => $row['district_code'],
+                        'emp_birthday'  => $row['emp_birthday'],
+                        'emp_bloodgroup'  => $row['emp_bloodgroup'],
+                        'emp_gender'  => $row['emp_gender'],
+                        'emp_marital_status'  => $row['emp_marital_status'],
+                        // 'emp_religion_id'  => $row['emp_religion_id'],
+                        // 'emp_nationality_id'  => $row['emp_nationality_id'],
+                        'emp_language'  => $row['emp_language'],
+                       // 'reporting_to'  => $row['reporting_to'],
+                        'emp_status_type'  => $row['emp_status_type'],
+                        //'date_of_superannuation'  => $row['date_of_superannuation'],
+                       
+
                 ]);
                 Log::debug('read'.print_r($employee->id,true));
                 
-            $user = User::create([
-                    'name'     => $row['name'],
-                    'email'    => $row['email'], 
-                    'emp_id'    => $employee->id, 
-                    'role'    => $row['role'], 
-                    'password' => \Hash::make($row['password']),
-                ]);
+                    $user = User::create([
+                            'name'     => $row['name'],
+                            'email'    => $row['email'], 
+                            'emp_id'    => $employee->id, 
+                            'role'    => $row['role'], 
+                            'password' => \Hash::make($row['password']),
+                        ]);
 
-                // $user['name'] = $row['name'];
-                // $user['email'] = $row['email'];
-                // $user['role'] = $row['role'];
-                // $user['password'] = \Hash::make($row['password']);
-                // $user['emp_id'] = $employee->id;
-                // $user_create = User::create($user);
 
                 $education = EmployeeEducation::create([
                     'emp_id'    => $employee->id, 
+                    // 'emp_education_id'  => $row['emp_education_id'],
+                    // 'ins_name'  => $row['ins_name'],
+                    // 'degree'  => $row['degree'],
+                    // 'grade'  => $row['grade'],
+                    // 'year'  => $row['year'],
                 ]); 
                 $skills = EmployeeSkills::create([
                     'emp_id'    => $employee->id, 

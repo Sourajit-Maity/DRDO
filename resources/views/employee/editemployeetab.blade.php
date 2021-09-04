@@ -572,6 +572,19 @@ $(document).ready(function() {
                                 
                         </div>
                         <div class="form-group row">
+                            <label for="emergency_contact_name" class="col-md-4 col-form-label text-md-right">{{ __('Emergency Contact Name/आपातकालीन संपर्क नाम') }}</label><span style="color:red"> *</span>
+
+                            <div class="col-md-6">
+                                <input id="emergency_contact_name" type="text" class="form-control @error('emergency_contact_name') is-invalid @enderror" name="emergency_contact_name" value="{{ $employee->emergency_contact_name }}" required autocomplete="emergency_contact_name" autofocus>
+
+                                @error('emergency_contact_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="related_person" class="col-md-4 col-form-label text-md-right size">{{ __('Relation With The Person/व्यक्ति के साथ संबंध') }}</label><span style="color:red"> *</span>
 
                             <div class="col-md-6">

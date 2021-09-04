@@ -177,7 +177,8 @@ class EmployeeController extends Controller
         'father_name','mother_name','disability','caste','date_of_superannuation','emp_ofc_mobile',
         'azhrms_employee.id as id','azhrms_employee_assets.property_name','azhrms_employee_assets.property_details',
         'azhrms_employee_assets.giving_date','azhrms_employee_assets.return_date','return_property_conditions',
-        'acnt_holder_name','bank_name','branch_name','account_number','neft_code','ifsc_code',
+        'acnt_holder_name','bank_name','branch_name','account_number','neft_code','ifsc_code','emergency_contact_name',
+        
         'promotion_date','effective_from','last_designation','last_salary','letters','issuer',
         'committed_amount','ctc_per_month','esi_number','pf_uan_no','pf_no','ctc_per_annum','payroll_org','pf_effective_date',
         'azhrms_employee_edu_details.emp_education_id','azhrms_employee_edu_details.ins_name','azhrms_employee_edu_details.degree',
@@ -639,6 +640,7 @@ public function updateemployeebank($id, Request $request)
                 'emp_hm_telephone'  => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|between:8,14',
                 'emp_gender'  => 'required',
                 'disability'  => 'required',
+                'emergency_contact_name' => 'required',
                 'caste' => 'required',
                 //'date_of_superannuation' => 'required',
                 'emp_mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|between:8,14',
@@ -680,7 +682,7 @@ public function updateemployeebank($id, Request $request)
             $employee->emp_nationality_id= $request->get('emp_nationality_id');
             $employee->related_person= $request->get('related_person');
             $employee->emp_food_habit= $request->get('emp_food_habit');
-          
+            $employee->emergency_contact_name= $request->get('emergency_contact_name');
            
             $employee['emp_language'] = $arraytostring;
         
